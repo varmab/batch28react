@@ -1,5 +1,22 @@
 import React, {Component} from 'react'
 
+
+//Stateless functional components
+
+const Phone=(props)=>{
+    return(<p>{props.user.phone}</p>)
+}
+
+const User=(props)=>{
+    return (
+        <div>
+            <h1>{props.user.name}</h1>
+            {props.children}
+        </div>
+    )
+}
+
+
 class Users extends Component{
     constructor(){
         super();
@@ -12,7 +29,6 @@ class Users extends Component{
     }
 
     componentDidMount(){
-
         fetch('https://jsonplaceholder.typicode.com/users')
         .then(response=>response.json())
         .then(users=>{
@@ -50,13 +66,13 @@ class Users extends Component{
         return(
             <div>
                 <h1>Users</h1>
-                <ul>
                 {
                     this.state.users.map((user)=>{
-                        return <li key={user.id}>{user.name}</li>
+                        return <User key={user.id} user={user}>
+                                    <Phone user={user}/>
+                                </User>
                     })
                 }
-                </ul>
             </div>
         )
     }

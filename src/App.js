@@ -6,6 +6,7 @@ import Friends from './Friends';
 import Todos from './Todos';
 import MyLibrary from './MyLibrary'
 import Users from './Users'
+import Library from './Library/Library'
 
 class App extends Component{
   render(){
@@ -14,7 +15,7 @@ class App extends Component{
         <header className="App-header">
           <Welcome title="Varma" year={2022} password="123456"/>
         </header>
-        <Users/>
+        <Library/>
       </div>
     );
   }
